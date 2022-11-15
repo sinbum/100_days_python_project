@@ -1,1 +1,0 @@
-anoterh_variable = 12

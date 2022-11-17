@@ -1,27 +1,24 @@
-from menu import Menu, MenuItem
-from coffee_maker import CoffeeMaker
-from money_machine import MoneyMachine
+class User:
 
-IS_ON = True
+    def __init__(self, id, name):
+        """새로운 유저 객체 생성"""
+        self.id = id
+        self.name = name
+        self.followers = 0
+        self.following = 0
 
-coffee_maker = CoffeeMaker()
-menu = Menu()
-money_machine = MoneyMachine()
+    def follow(self, user):
+        user.followers += 1
+        self.following += 1
 
-while IS_ON:
-    # espresso / latte / cappuccino
-    choice = input("What would you like?" + " " + menu.get_items() + " ")
 
-    if choice == 'off':
-        print("this coffee machine now turn off")
-        is_on = False
-    elif choice == 'report':
-        # print ingredients!.
-        coffee_maker.report()
-        money_machine.report()
-    else:
-        drink = menu.find_drink(choice)
-        if drink:
-            if coffee_maker.is_resource_sufficient(drink):
-                money_machine.make_payment(drink.cost)
-                coffee_maker.make_coffee(drink)
+user1 = User('001', 'Alice')
+user2 = User('002', 'Shen')
+
+
+user1.follow(user2)
+
+print(user1.followers)
+print(user1.following)
+print(user2.followers)
+print(user2.following)

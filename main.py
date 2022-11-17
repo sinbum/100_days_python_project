@@ -1,24 +1,12 @@
-class User:
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
 
-    def __init__(self, id, name):
-        """새로운 유저 객체 생성"""
-        self.id = id
-        self.name = name
-        self.followers = 0
-        self.following = 0
+question_bank = []
+for data in question_data:
+    question = Question(data['text'], data['answer'])
+    question_bank.append(question)
 
-    def follow(self, user):
-        user.followers += 1
-        self.following += 1
+quiz = QuizBrain(q_list=question_bank)
+quiz.next_question()
 
-
-user1 = User('001', 'Alice')
-user2 = User('002', 'Shen')
-
-
-user1.follow(user2)
-
-print(user1.followers)
-print(user1.following)
-print(user2.followers)
-print(user2.following)

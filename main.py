@@ -1,16 +1,26 @@
-from question_model import Question
-from data import question_data
-from quiz_brain import QuizBrain
+import pandas
 
-question_bank = []
-for data in question_data:
-    question = Question(data['question'], data['correct_answer'])
-    question_bank.append(question)
+data = pandas.read_csv("weather_data.csv")
 
-quiz = QuizBrain(q_list=question_bank)
+print(data["temp"].max())
 
 
-while quiz.still_has_question():
-    quiz.next_question()
+# data_dict =data.to_dict()
+# print(data_dict)
 
-quiz.report_score()
+
+# temp_list = data["temp"].to_list
+# print(temp_list)
+
+
+
+#Create a dataframe from scratch
+
+data_dict = {
+    "students" : ["Amy","James","Angela"],
+    "scores" : [76,56,65]
+}
+df = pandas.DataFrame(data_dict)
+print(df.students)
+df.to_csv("new_data.csv")
+

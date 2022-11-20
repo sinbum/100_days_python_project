@@ -22,5 +22,5 @@ data_dict = {
 }
 df = pandas.DataFrame(data_dict)
 print(df.students)
-df.to_csv("new_data.csv")
+# df.to_csv("new_data.csv")
 
